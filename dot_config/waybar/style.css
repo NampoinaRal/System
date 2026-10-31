@@ -26,6 +26,13 @@ button:hover {
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
+#power-profiles-daemon:hover,
+#idle_inhibitor:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#battery:hover,
+#clock:hover{
     background-color: #eb5e28;
 }
 
