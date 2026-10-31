@@ -1,0 +1,1 @@
+eval "$(oh-my-posh init bash --config '/home/nampoina/.config/ohmyposh/cloud-context-custom.omp.json')"
