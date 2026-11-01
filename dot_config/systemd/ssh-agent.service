@@ -1,0 +1,10 @@
+[Unit]
+Description=SSH authentication agent
+
+[Service]
+Type=simple
+# -D obligatoire raha systemd, %t mitovy amin'ny ${XDG_RUNTIME_DIR} ho an'ny systemd 
+ExecStart=/usr/bin/ssh-agent -D -a %t/ssh-agent.socket
+
+[Install]
+WantedBy=default.target
