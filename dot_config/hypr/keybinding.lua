@@ -18,11 +18,10 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu .. "drun"))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu .. "run"))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(menu .. "run"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -79,3 +78,66 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+-- Switch to a submap called `resize`.
+hl.bind(mainMod .. " + R", hl.dsp.submap("Resize"))
+
+-- Start a submap called "resize".
+hl.define_submap("Resize", function()
+	-- Set repeating binds for resizing the active window.
+	hl.bind("right", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
+	hl.bind("left", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+	hl.bind("up", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+	hl.bind("down", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
+
+	-- Use `reset` to go back to the global submap
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
+local function switch(layout)
+	return function()
+		hl.config({
+			general = {
+				layout = layout,
+			},
+		})
+	end
+end
+
+hl.bind(mainMod .. " + L", hl.dsp.submap("Layout"))
+hl.define_submap("Layout", function()
+	hl.bind("D", switch("dwindle"))
+	hl.bind("M", switch("master"))
+	hl.bind("S", switch("scrolling"))
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
+local function layout_bind(bind_table)
+	return function()
+		local workspace = hl.get_active_special_workspace() or hl.get_active_workspace()
+
+		if not workspace then
+			return
+		end
+
+		local layout = workspace.tiled_layout
+
+		if bind_table[layout] then
+			hl.dispatch(bind_table[layout])
+		end
+	end
+end
+
+hl.bind(
+	mainMod .. " + T",
+	layout_bind({
+		scrolling = hl.dsp.layout("swapcol r"),
+		dwindle = hl.dsp.layout("togglesplit"),
+		master = hl.dsp.layout("cyclenext"),
+	})
+)
+
+hl.bind(
+	mainMod .. " + V",
+	hl.dsp.exec_cmd("cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy")
+)
