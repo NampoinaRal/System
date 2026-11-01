@@ -3,7 +3,8 @@ require("keybinding")
 require("autostart")
 require("input")
 require("misc")
-
+require("look")
+require("layout")
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
