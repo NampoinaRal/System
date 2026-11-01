@@ -1,0 +1,19 @@
+[GTK]
+application_prefer_dark_theme = true
+cursor_theme_name = "Adwaita"
+font_name = "CodeNewRoman Nerd Font 14"
+
+[commands]
+reboot = ["systemctl", "reboot"]
+poweroff = ["systemctl", "poweroff"]
+
+[widget.clock]
+format = "%a %H:%M"
+resolution = "500ms"
+
+[background]
+path = "/etc/greetd/wallhaven-nmyqjy_1920x1080.png"
+fit = "Contain"
+
+[appearance]
+greeting_msg = "Hello World!"
