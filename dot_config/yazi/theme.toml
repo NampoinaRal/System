@@ -1,0 +1,30 @@
+[app]
+overall = { bg = "#252422" }
+
+[mgr]
+cwd = { fg = "#eb5e28" }
+
+[indicator]
+parent = { bg = "#eb5e28", fg = "#fffcf2" }
+current = { bg = "#eb5e28", fg = "#fffcf2" }
+preview = { underline = false }
+
+[tabs]
+active = { bg = "#eb5e28", fg = "#fffcf2" }
+inactive = { bg = "#403d39", fg = "#fffcf2" }
+
+[mode]
+normal_main = { bg = "#eb5e28", fg = "#fffcf2" }
+normal_alt = { bg = "#403d39", fg = "#fffcf2" }
+
+[status]
+perm_type = { fg = "#ccc5b9" }
+perm_read = { fg = "#ccc5b9" }
+perm_write = { fg = "#fffcf2" }
+perm_exec = { fg = "#eb5e28" }
+
+[filetype]
+rules = [{ url = "*", fg = "#fffcf2" }, { url = "*/", fg = "#eb5e28" }]
+
+[icon]
+prepend_conds = [{ if = "dir", text = "", fg = "#eb5e28" }]
