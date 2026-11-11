@@ -1,0 +1,180 @@
+configuration {
+	font: "CodeNewRoman Nerd Font 12";
+	fixed-num-lines: false;
+	show-icons: true;
+  terminal: "kitty";
+/*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
+/*	window-match-fields: "all";*/
+	cycle: false;
+	scroll-method: 1;
+/*	window-format: "{w}    {c}   {t}";*/
+/*	combi-hide-mode-prefix: false;*/
+/*	application-fallback-icon: ;*/
+/*	completer-mode: "filebrowser";*/
+/*	imdkit: true;*/
+/*	display-filebrowser: ;*/
+/*	display-recursivebrowser: ;*/
+/*	ml-row-left: "ScrollLeft";*/
+/*	ml-row-right: "ScrollRight";*/
+/*	ml-row-up: "ScrollUp";*/
+/*	ml-row-down: "ScrollDown";*/
+/*	me-select-entry: "MousePrimary";*/
+/*	me-accept-entry: "MouseDPrimary";*/
+/*	me-accept-custom: "Control+MouseDPrimary";*/
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+}
+/**
+ * rofi -dump-theme output.
+ * Rofi version: 2.0.0
+ **/
+* {
+    paprika : #eb5e28;
+    carbon : #252422;
+    charcoal : #403d39;
+    dust : #ccc5b9;
+    floral : #fffcf2;
+    background-color: transparent;
+    spacing: 2;
+    border-color : var(charcoal);
+}
+element {
+    padding: 8px ;
+    cursor:  pointer;
+    spacing: 10px ;
+    border:  0;
+}
+element normal.normal {
+    background-color: var(carbon);
+}
+element normal.urgent {
+    background-color: var(paprika);
+}
+element normal.active {
+    background-color: var(paprika);
+}
+element selected.normal {
+    background-color: var(paprika);
+}
+element selected.urgent {
+    background-color: var(paprika);
+}
+element selected.active {
+    background-color: var(paprika);
+}
+element alternate.normal {
+    background-color: var(carbon);
+}
+element alternate.urgent {
+    background-color: var(paprika);
+}
+element alternate.active {
+    background-color: var(paprika);
+}
+
+element-text {
+    background-color: transparent;
+    cursor:           inherit;
+    highlight:        inherit;
+    text-color: var(floral);
+}
+element-icon {
+    background-color: transparent;
+    size:             1.0000em ;
+    cursor:           inherit;
+    text-color:       inherit;
+}
+window {
+    padding:          5;
+    background-color: var(carbon);
+    border:           1;
+}
+mainbox {
+    padding: 0;
+    border:  0;
+}
+message {
+    padding:      5px ;
+    border-color: var(dust);
+    border:       2px dash 0px 0px ;
+}
+textbox {
+    text-color: var(floral);
+}
+listview {
+    padding:      2px 0px 0px ;
+    scrollbar:    true;
+    border-color: var(dust);
+    spacing:      2px ;
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
+}
+scrollbar {
+    width:        4px ;
+    padding:      0;
+    handle-width: 8px ;
+    border:       0;
+    handle-color: var(charcoal);
+}
+sidebar {
+    border-color: var(dust);
+    border:       2px dash 0px 0px ;
+}
+button {
+    cursor:     pointer;
+    spacing:    0;
+    text-color: var(floral);
+}
+button selected {
+    background-color: var(paprika);
+    text-color:       var(floral);
+}
+num-filtered-rows {
+    expand:     false;
+    text-color: var(charcoal);
+}
+num-rows {
+    expand:     false;
+    text-color: var(charcoal);
+}
+textbox-num-sep {
+    expand:     false;
+    str:        "/";
+    text-color: var(charcoal);
+}
+inputbar {
+    padding:    1px ;
+    spacing:    0px ;
+    text-color: var(floral);
+    children:   [ "prompt","textbox-prompt-colon","entry","overlay","num-filtered-rows","textbox-num-sep","num-rows","case-indicator" ];
+}
+overlay {
+    padding:          0px 0.2000em ;
+    background-color: var(carbon);
+    foreground-color: var(floral);
+    margin:           0px 0.2000em ;
+    text-color:       var(floral);
+}
+case-indicator {
+    spacing:    0;
+    text-color: var(floral);
+}
+entry {
+    text-color:        var(floral);
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: var(charcoal);
+    placeholder:       "Filtrer";
+}
+prompt {
+    spacing:    0;
+    text-color: var(floral);
+}
+textbox-prompt-colon {
+    margin:     0px 0.3000em 0.0000em 0.0000em ;
+    expand:     false;
+    str:        ":";
+    text-color: inherit;
+}
